@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import {
   DownloadBanner,
   HomeCarosoul,
@@ -6,17 +6,17 @@ import {
   Quotes,
   ShopByBrands,
   ShopByCategory,
-} from "@/components";
-import SearchForProducts from "@/components/Navbar/SearchForProducts/SearchForProducts";
-import { useAppContext } from "@/provider/ContextProvider/ContextProvider";
-import { useGEtWishList } from "@/queries/Product";
+} from '@/components';
+import SearchForProducts from '@/components/Navbar/SearchForProducts/SearchForProducts';
+import { useAppContext } from '@/provider/ContextProvider/ContextProvider';
+import { useGEtWishList } from '@/queries/Product';
 import {
   useGetAllBanners,
   useGetAllBrands,
   useGetAllCategories,
   useGetAllHomeProducts,
-} from "@/queries/dataHandlers";
-import Link from "next/link";
+} from '@/queries/dataHandlers';
+import Link from 'next/link';
 
 export default function Home() {
   const { data: brandsData } = useGetAllBrands();
@@ -43,7 +43,8 @@ export default function Home() {
       </svg>
     `;
 
-    // Toggle the content's max-height for smooth opening and closing
+    if (!content || !icon) return;
+
     if (content.style.maxHeight && content.style.maxHeight !== '0px') {
       content.style.maxHeight = '0';
       icon.innerHTML = upSVG;
@@ -67,30 +68,69 @@ export default function Home() {
         </div>
         <div className="block sm:hidden">
           <div className="border-b border-slate-200">
-            <button onClick={() => toggleAccordion(1)} className="w-full flex justify-between items-center py-1 text-slate-800">
+            <button
+              onClick={() => toggleAccordion(1)}
+              className="w-full flex justify-between items-center py-1 text-slate-800"
+            >
               <span>What is Material Tailwind?</span>
-              <span id="icon-1" className="text-slate-800 transition-transform duration-300">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+              <span
+                id="icon-1"
+                className="text-slate-800 transition-transform duration-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  className="size-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                  />
                 </svg>
-
               </span>
             </button>
-            <div id="content-1" className="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+            <div
+              id="content-1"
+              className="max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
+            >
               <div className="pb-5 text-sm text-slate-500">
                 <div className="border-b border-slate-200">
-                  <button onClick={() => toggleAccordion(2)} className="w-full flex justify-between items-center py-1 text-slate-800">
+                  <button
+                    onClick={() => toggleAccordion(2)}
+                    className="w-full flex justify-between items-center py-1 text-slate-800"
+                  >
                     <span>How to use Material Tailwind?</span>
-                    <span id="icon-2" className="text-slate-800 transition-transform duration-300">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                    <span
+                      id="icon-2"
+                      className="text-slate-800 transition-transform duration-300"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        className="size-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                        />
                       </svg>
-
                     </span>
                   </button>
-                  <div id="content-2" className="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                  <div
+                    id="content-2"
+                    className="max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
+                  >
                     <div className="pb-5 text-sm text-slate-500">
-                      You can use Material Tailwind by importing its components into your Tailwind CSS project.
+                      You can use Material Tailwind by importing its components
+                      into your Tailwind CSS project.
                     </div>
                   </div>
                 </div>
@@ -99,18 +139,38 @@ export default function Home() {
           </div>
 
           <div className="border-b border-slate-200">
-            <button onClick={() => toggleAccordion(3)} className="w-full flex justify-between items-center py-1 text-slate-800">
+            <button
+              onClick={() => toggleAccordion(3)}
+              className="w-full flex justify-between items-center py-1 text-slate-800"
+            >
               <span>How to use Material Tailwind?</span>
-              <span id="icon-3" className="text-slate-800 transition-transform duration-300">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+              <span
+                id="icon-3"
+                className="text-slate-800 transition-transform duration-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  className="size-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                  />
                 </svg>
-
               </span>
             </button>
-            <div id="content-3" className="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+            <div
+              id="content-3"
+              className="max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
+            >
               <div className="pb-5 text-sm text-slate-500">
-                You can use Material Tailwind by importing its components into your Tailwind CSS project.
+                You can use Material Tailwind by importing its components into
+                your Tailwind CSS project.
               </div>
             </div>
           </div>
@@ -120,7 +180,7 @@ export default function Home() {
           quote="“All progress takes place outside the comfort zone.”"
         />
         {homeProducts?.data
-          ?.filter((item: any) => item.type === "Single")
+          ?.filter((item: any) => item.type === 'Single')
           .map((item: any, index: number) => (
             <ProductSection
               key={index}
@@ -132,7 +192,7 @@ export default function Home() {
           ))}
 
         {homeProducts?.data
-          ?.filter((item: any) => item.type === "Combo")
+          ?.filter((item: any) => item.type === 'Combo')
           .map((item: ComboType, index: number) => (
             <div
               key={item.id}
@@ -170,7 +230,7 @@ export default function Home() {
 export type ComboType = {
   id: number;
   name: string;
-  type: "Single" | "Combo";
+  type: 'Single' | 'Combo';
   products: {
     id: number;
     image: string;

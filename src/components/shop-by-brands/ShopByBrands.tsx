@@ -1,20 +1,20 @@
-"use client";
+'use client';
 import {
   FilterBy,
   HomeCarosoul,
   OutlinedButton,
   ProductCard,
-} from "@/components";
-import CustomPageWrapper from "@/components/Wrappers/CustomPageWrapper";
-import { useAppContext } from "@/provider/ContextProvider/ContextProvider";
+} from '@/components';
+import CustomPageWrapper from '@/components/Wrappers/CustomPageWrapper';
+import { useAppContext } from '@/provider/ContextProvider/ContextProvider';
 
-import { useGetAllBanners, useGetAllProducts } from "@/queries/dataHandlers";
-import { useSearchParams } from "next/navigation";
-import { ChangeEvent, useState } from "react";
+import { useGetAllBanners, useGetAllProducts } from '@/queries/dataHandlers';
+import { useSearchParams } from 'next/navigation';
+import { ChangeEvent, useState } from 'react';
 
 export default function ShopByBrandPage() {
-  const parmas = useSearchParams();
-  const category = parmas.get("category");
+  const params = useSearchParams();
+  const category = params?.get('category') ?? null;
   const { filterProductsParams, selectedBrands } = useAppContext();
   const [sorting, setSorting] = useState<string | null>(null);
   const { data: bannersData } = useGetAllBanners();
@@ -33,14 +33,14 @@ export default function ShopByBrandPage() {
           <div className="max-[1000px]:hidden">
             <HomeCarosoul
               bannersData={
-                selectedBrands && !selectedBrands?.includes("&")
+                selectedBrands && !selectedBrands?.includes('&')
                   ? [{ id: 1, web: allProducts?.brandDetails?.banner }]
                   : bannersData?.banner || []
               }
               className="!w-[1000px]"
             />
           </div>
-          {selectedBrands && !selectedBrands?.includes("&") && (
+          {selectedBrands && !selectedBrands?.includes('&') && (
             <div className="w-full ">
               <p className="text-black text-start  text-[28px] max-sm:text-lg not-italic font-semibold">
                 {allProducts?.brandDetails?.name}
@@ -53,7 +53,7 @@ export default function ShopByBrandPage() {
             <p className="text-black text-center text-2xl max-sm:text-base not-italic font-semibold">
               {selectedBrands
                 ? allProducts?.brandDetails?.name
-                : "All Products"}
+                : 'All Products'}
               <span className="text-black text-lg max-sm:text-sm not-italic font-normal">
                 ({allProducts?.products.length} Items)
               </span>
@@ -96,7 +96,7 @@ const VarityCard = ({
     <div
       onClick={onClick}
       className={`border-[2px] text-black text-center text-xs not-italic font-medium cursor-pointer rounded-[12px] p-2 ${
-        active ? "text-gradient border-red-400" : ""
+        active ? 'text-gradient border-red-400' : ''
       }`}
     >
       {label}
@@ -132,8 +132,8 @@ const PaginationButton = ({
     <div
       className={`w-[32px] h-[32px] rounded-full flex items-center justify-center text-xs not-italic font-semibold cursor-pointer border-[1px] ${
         active
-          ? "border-red-500 text-white linear-gradient-1"
-          : "border-red-500 text-gradient"
+          ? 'border-red-500 text-white linear-gradient-1'
+          : 'border-red-500 text-gradient'
       } ${className}`}
     >
       {label}

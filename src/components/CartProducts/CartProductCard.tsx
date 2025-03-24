@@ -1,23 +1,36 @@
-import { TrashIcon } from "@/Icons";
+import { TrashIcon } from '@/Icons';
 import {
   useGetProductDetail,
   useRemoveFromCart,
   useUpdateQuantityFromCart,
-} from "@/queries/Cart";
-import { cartData } from "./CartProducts";
+} from '@/queries/Cart';
 
 export default function CartProductCard({
   className,
   productDetail,
 }: {
   className?: string;
-  productDetail: cartData;
+  productDetail: {
+    id: number;
+    qty: number;
+    varientId: number;
+    product: {
+      id: number;
+      varients: Array<{
+        id: number;
+        units: string;
+        flavor: string;
+        premiumPrice: number;
+        sellingPrice: number;
+      }>;
+    };
+  };
 }) {
   const { mutate: removeFromCart } = useRemoveFromCart();
   const { data } = useGetProductDetail(productDetail?.product?.id, 1);
   const { mutate: updateQuantityFromCart } = useUpdateQuantityFromCart();
   const productData = productDetail?.product?.varients?.find(
-    (varient) => varient.id === productDetail?.varientId
+    (varient: { id: number }) => varient.id === productDetail?.varientId
   );
   return (
     <div

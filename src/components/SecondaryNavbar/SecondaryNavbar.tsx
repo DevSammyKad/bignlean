@@ -1,14 +1,14 @@
-"use client";
-import { useDispatchContext } from "@/provider/ContextProvider/ContextProvider";
+'use client';
+import { useDispatchContext } from '@/provider/ContextProvider/ContextProvider';
 import {
   Offer,
   useGetAllBrands,
   useGetAllCategories,
   useGetAllOffers,
-} from "@/queries/dataHandlers";
-import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
+} from '@/queries/dataHandlers';
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 export default function SecondaryNavbar() {
   const { data: brandsData } = useGetAllBrands();
@@ -21,22 +21,22 @@ export default function SecondaryNavbar() {
   const dispatch = useDispatchContext();
   const pathname = usePathname();
   const { data: offersData } = useGetAllOffers();
-  
+
   const handleBrandClick = (brandId: number) => {
     if (brandId) {
       dispatch({
-        type: "SET_SELECTED_BRANDS",
+        type: 'SET_SELECTED_BRANDS',
         payload: `brands[]=${brandId}`,
       });
-      router.push("/shop-by-brands");
+      router.push('/shop-by-brands');
       setShow(false);
     }
   };
-  
+
   const showBrandModal = () => {
     setShow(!show);
   };
-  
+
   const showCategoryModal = () => {
     setShowCategories(!showCategories);
   };
@@ -47,7 +47,7 @@ export default function SecondaryNavbar() {
 
   return (
     <div>
-      <div className="max-w-full hidden md:flex mx-auto gap-[35px] max-[1300px]:px-5 max-sm:px-2 bg-white flex justify-start p-3 sticky top-0 left-0 w-full z-50 bg-light-grey pt-2 pb-2 pl-[5rem] border-b">
+      <div className="max-w-full  md:flex mx-auto gap-[35px] max-[1300px]:px-5 max-sm:px-2 bg-white flex justify-start p-3 sticky top-0 left-0 w-full z-50  pt-2 pb-2 pl-[5rem] border-b">
         <div className="flex items-center gap-6">
           <div
             onMouseEnter={showCategoryModal}
@@ -59,8 +59,14 @@ export default function SecondaryNavbar() {
               Shop By Category
             </p>
             {showCategories && (
-              <div style={{ backgroundColor: "#F9F9F9" }} className="absolute top-full flex flex-col font-light left-0 bg-white z-50 border-none whitespace-nowrap h-[55px] rounded-bl-[10px]">
-                <div className="w-[234px] h-[55px] bg-[#F9F9F9] rounded-bl-[10px]" style={{ position: "absolute", top: "0" }}>
+              <div
+                style={{ backgroundColor: '#F9F9F9' }}
+                className="absolute top-full flex flex-col font-light left-0 bg-white z-50 border-none whitespace-nowrap h-[55px] rounded-bl-[10px]"
+              >
+                <div
+                  className="w-[234px] h-[55px] bg-[#F9F9F9] rounded-bl-[10px]"
+                  style={{ position: 'absolute', top: '0' }}
+                >
                   <div
                     onMouseEnter={() => setShowSubCategories(true)}
                     onMouseLeave={() => setShowSubCategories(false)}
@@ -74,9 +80,14 @@ export default function SecondaryNavbar() {
                   {showSubCategories && (
                     <div
                       onMouseEnter={() => setShowSubCategories(true)}
-                      onMouseLeave={() => setShowSubCategories(false)} 
-                      className="bg-white h-[350px] rounded-br-[10px]" 
-                      style={{ position: "absolute", left: "234px", top: "0", width: "70rem" }}
+                      onMouseLeave={() => setShowSubCategories(false)}
+                      className="bg-white h-[350px] rounded-br-[10px]"
+                      style={{
+                        position: 'absolute',
+                        left: '234px',
+                        top: '0',
+                        width: '70rem',
+                      }}
                     >
                       <div className="flex justify-between gap-1 p-3">
                         <div className="min-w-[130px] ">
@@ -84,10 +95,50 @@ export default function SecondaryNavbar() {
                             Protein
                           </h2>
                           <div>
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>whey-protein</Link><br />
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>Beginners Whey Protein</Link><br />
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>Whey Protein Isolate</Link><br />
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>Whey Protein Isolate</Link><br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              whey-protein
+                            </Link>
+                            <br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              Beginners Whey Protein
+                            </Link>
+                            <br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              Whey Protein Isolate
+                            </Link>
+                            <br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              Whey Protein Isolate
+                            </Link>
+                            <br />
                           </div>
                         </div>
                         <div className="min-w-[130px]">
@@ -95,8 +146,28 @@ export default function SecondaryNavbar() {
                             Gainers
                           </h2>
                           <div>
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>Weight gainer</Link><br />
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>Mass gainer</Link><br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              Weight gainer
+                            </Link>
+                            <br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              Mass gainer
+                            </Link>
+                            <br />
                           </div>
                         </div>
                         <div className="min-w-[130px]">
@@ -104,17 +175,127 @@ export default function SecondaryNavbar() {
                             Pre/Post Workout
                           </h2>
                           <div>
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>pre-workout</Link><br />
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>post-workout</Link><br />
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>BCAAs</Link><br />
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>Creatine</Link><br />
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>Beta Alanine</Link><br />
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>EAA</Link><br />
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>Amiro</Link><br />
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>Electrolyted</Link><br />
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>Mitric oxide</Link><br />
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>Citruline Mallate</Link><br />
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>Others</Link><br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              pre-workout
+                            </Link>
+                            <br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              post-workout
+                            </Link>
+                            <br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              BCAAs
+                            </Link>
+                            <br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              Creatine
+                            </Link>
+                            <br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              Beta Alanine
+                            </Link>
+                            <br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              EAA
+                            </Link>
+                            <br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              Amiro
+                            </Link>
+                            <br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              Electrolyted
+                            </Link>
+                            <br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              Mitric oxide
+                            </Link>
+                            <br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              Citruline Mallate
+                            </Link>
+                            <br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              Others
+                            </Link>
+                            <br />
                           </div>
                         </div>
                         <div className="min-w-[130px]">
@@ -122,12 +303,72 @@ export default function SecondaryNavbar() {
                             Workout Essentials
                           </h2>
                           <div>
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>Fat burners</Link><br />
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>Testo Booster</Link><br />
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>Multivitamin</Link><br />
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>ZMA</Link><br />
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>L Carnitine</Link><br />
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>Weight Loss Supplement</Link><br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              Fat burners
+                            </Link>
+                            <br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              Testo Booster
+                            </Link>
+                            <br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              Multivitamin
+                            </Link>
+                            <br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              ZMA
+                            </Link>
+                            <br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              L Carnitine
+                            </Link>
+                            <br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              Weight Loss Supplement
+                            </Link>
+                            <br />
                           </div>
                         </div>
                         <div className="min-w-[130px]">
@@ -135,11 +376,61 @@ export default function SecondaryNavbar() {
                             Health Wellness
                           </h2>
                           <div>
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>Collagen</Link><br />
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>Omega-3</Link><br />
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>Flaxseed oil</Link><br />
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>Biotin</Link><br />
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>Mask</Link><br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              Collagen
+                            </Link>
+                            <br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              Omega-3
+                            </Link>
+                            <br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              Flaxseed oil
+                            </Link>
+                            <br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              Biotin
+                            </Link>
+                            <br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              Mask
+                            </Link>
+                            <br />
                           </div>
                         </div>
                         <div className="min-w-[130px]">
@@ -147,16 +438,116 @@ export default function SecondaryNavbar() {
                             Fitness
                           </h2>
                           <div>
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>Shaked</Link><br />
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>Abdomen belts</Link><br />
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>Smart Watch</Link><br />
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>Yoga mat</Link><br />
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>Gym bag</Link><br />
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>Multi Gym Accessories</Link><br />
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>Elbow support</Link><br />
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>Wrist support</Link><br />
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>Hand Grip</Link><br />
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>Resistance band</Link><br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              Shaked
+                            </Link>
+                            <br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              Abdomen belts
+                            </Link>
+                            <br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              Smart Watch
+                            </Link>
+                            <br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              Yoga mat
+                            </Link>
+                            <br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              Gym bag
+                            </Link>
+                            <br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              Multi Gym Accessories
+                            </Link>
+                            <br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              Elbow support
+                            </Link>
+                            <br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              Wrist support
+                            </Link>
+                            <br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              Hand Grip
+                            </Link>
+                            <br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              Resistance band
+                            </Link>
+                            <br />
                           </div>
                         </div>
                         <div className="min-w-[130px]">
@@ -164,9 +555,39 @@ export default function SecondaryNavbar() {
                             Fitness Clothing
                           </h2>
                           <div>
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>T-shirt</Link><br />
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>Shorts</Link><br />
-                            <Link href="#" className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]" style={{ display: "inline-block", marginBottom: "4px" }}>Jackets</Link><br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              T-shirt
+                            </Link>
+                            <br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              Shorts
+                            </Link>
+                            <br />
+                            <Link
+                              href="#"
+                              className="cursor-pointer hover:bg-gray-100 px-4 py-0.5 text-[14px] not-italic font-normal leading-4 text-black-500 hover:text-[#FF0012]"
+                              style={{
+                                display: 'inline-block',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              Jackets
+                            </Link>
+                            <br />
                           </div>
                         </div>
                       </div>
@@ -237,7 +658,9 @@ export default function SecondaryNavbar() {
                           alt="offer"
                           className="object-cover rounded w-full h-full"
                         />
-                        <p className="cursor-pointer hover:bg-gray-100 px-5 py-2 text-base not-italic font-normal leading-6">{offer.name}</p>
+                        <p className="cursor-pointer hover:bg-gray-100 px-5 py-2 text-base not-italic font-normal leading-6">
+                          {offer.name}
+                        </p>
                       </div>
                     </Link>
                   ))}
@@ -253,15 +676,15 @@ export default function SecondaryNavbar() {
   );
 }
 const CustomerSupport = () => {
-  const pathname = usePathname();
+  const pathname = usePathname() ?? '';
   const [hovered, setHovered] = useState(false);
 
   const fillColor =
-    pathname.includes("/contact-us") || hovered ? "#E70F0F" : "#77777E";
+    pathname.includes('/contact-us') || hovered ? '#E70F0F' : '#77777E';
 
   return (
     <Link
-      href={"/contact-us"}
+      href={'/contact-us'}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className={`flex items-center gap-2`}
@@ -279,10 +702,11 @@ const CustomerSupport = () => {
           d="M3.6 0C1.61178 0 0 1.61177 0 3.6V14.4C0 16.3882 1.61178 18 3.6 18H12.6C14.5882 18 16.2 16.3882 16.2 14.4V5.09117C16.2 4.13639 15.8207 3.22072 15.1456 2.54559L13.6544 1.05442C12.9793 0.379285 12.0636 0 11.1088 0H3.6ZM4.5 3.825C4.12721 3.825 3.825 4.12721 3.825 4.5C3.825 4.87279 4.12721 5.175 4.5 5.175H11.7C12.0728 5.175 12.375 4.87279 12.375 4.5C12.375 4.12721 12.0728 3.825 11.7 3.825H4.5ZM3.825 9C3.825 8.62721 4.12721 8.325 4.5 8.325H11.7C12.0728 8.325 12.375 8.62721 12.375 9C12.375 9.37279 12.0728 9.675 11.7 9.675H4.5C4.12721 9.675 3.825 9.37279 3.825 9ZM4.5 12.825C4.12721 12.825 3.825 13.1272 3.825 13.5C3.825 13.8728 4.12721 14.175 4.5 14.175H8.1C8.47279 14.175 8.775 13.8728 8.775 13.5C8.775 13.1272 8.47279 12.825 8.1 12.825H4.5Z"
           fill={fillColor}
         />
-      </svg>{" "}
+      </svg>{' '}
       <p
-        className={`text-gray-600 text-[14px] not-italic hover:text-[#E70F0F] font-medium ${pathname.includes("/contact-us") ? "!text-[#E70F0F]" : ""
-          }`}
+        className={`text-gray-600 text-[14px] not-italic hover:text-[#E70F0F] font-medium ${
+          pathname.includes('/contact-us') ? '!text-[#E70F0F]' : ''
+        }`}
       >
         Customer Support
       </p>
@@ -290,15 +714,15 @@ const CustomerSupport = () => {
   );
 };
 const Blogs = () => {
-  const pathname = usePathname();
+  const pathname = usePathname() ?? '';
   const [hovered, setHovered] = useState(false);
 
   const fillColor =
-    pathname.includes("/blogs") || hovered ? "#E70F0F" : "#77777E";
+    pathname.includes('/blogs') || hovered ? '#E70F0F' : '#77777E';
 
   return (
     <Link
-      href={"/blogs"}
+      href={'/blogs'}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className={`flex items-center gap-2`}
@@ -316,8 +740,9 @@ const Blogs = () => {
         />
       </svg>
       <p
-        className={`text-gray-600 text-[14px] not-italic hover:text-[#E70F0F] font-medium ${pathname.includes("/blogs") ? "!text-[#E70F0F]" : ""
-          }`}
+        className={`text-gray-600 text-[14px] not-italic hover:text-[#E70F0F] font-medium ${
+          pathname.includes('/blogs') ? '!text-[#E70F0F]' : ''
+        }`}
       >
         Blogs
       </p>
@@ -325,11 +750,11 @@ const Blogs = () => {
   );
 };
 const OfferZone = () => {
-  const pathname = usePathname();
+  const pathname = usePathname() ?? '';
   const [hovered, setHovered] = useState(false);
 
   const fillColor =
-    pathname.includes("/offers") || hovered ? "#E70F0F" : "#77777E";
+    pathname.includes('/offers') || hovered ? '#E70F0F' : '#77777E';
 
   return (
     <div
@@ -352,10 +777,11 @@ const OfferZone = () => {
         />
       </svg>
       <p
-        className={`text-gray-600 text-[14px] not-italic  font-medium ${pathname.includes("/offers")
-          ? "!text-[#E70F0F]"
-          : "hover:text-[#E70F0F]"
-          }`}
+        className={`text-gray-600 text-[14px] not-italic  font-medium ${
+          pathname.includes('/offers')
+            ? '!text-[#E70F0F]'
+            : 'hover:text-[#E70F0F]'
+        }`}
       >
         Offer Zone
       </p>
@@ -376,7 +802,7 @@ const OfferIcon = ({ active }: { active?: boolean }) => {
         fillRule="evenodd"
         clipRule="evenodd"
         d="M6.12426 2.0576L7.60314 0.578567C7.9735 0.208214 8.47608 0 8.99984 0C9.52374 0 10.0262 0.208197 10.3965 0.578567L11.8756 2.0576H13.9671C14.491 2.0576 14.9933 2.26566 15.3638 2.63616C15.7342 3.00652 15.9424 3.50896 15.9424 4.03286V6.12429L17.4214 7.60332C17.7917 7.97367 18 8.47612 18 9.00002C18 9.52392 17.7918 10.0264 17.4214 10.3967L15.9425 11.8756V13.9673C15.9425 14.4911 15.7343 14.9935 15.3639 15.364C14.9934 15.7343 14.491 15.9425 13.9672 15.9425H11.8756L10.3965 17.4214C10.0262 17.7918 9.52374 18 8.99984 18C8.47605 18 7.9735 17.7918 7.60314 17.4214L6.12426 15.9425H4.03272C3.50882 15.9425 3.00638 15.7345 2.63602 15.364C2.26553 14.9936 2.05746 14.491 2.05746 13.9673V11.8756L0.578567 10.3967C0.208214 10.0264 0 9.52392 0 9.00002C0 8.47612 0.208197 7.97367 0.578567 7.60332L2.0576 6.12429V4.03275C2.0576 3.50896 2.26566 3.00655 2.63602 2.63606C3.00652 2.2657 3.50896 2.05763 4.03272 2.05763L6.12426 2.0576ZM12.033 7.12409C12.3524 6.80454 12.3524 6.2865 12.033 5.96696C11.7135 5.6474 11.1954 5.6474 10.8759 5.96696L5.96682 10.876C5.64726 11.1956 5.64726 11.7136 5.96682 12.033C6.28637 12.3526 6.80441 12.3526 7.12395 12.0331L12.033 7.12409ZM7.77265 6.54552C7.77265 7.22325 7.22311 7.77279 6.54538 7.77279C5.86765 7.77279 5.31812 7.22325 5.31812 6.54552C5.31812 5.86779 5.86765 5.31826 6.54538 5.31826C7.22311 5.31826 7.77265 5.86779 7.77265 6.54552ZM11.4544 12.6818C12.1322 12.6818 12.6817 12.1323 12.6817 11.4546C12.6817 10.7768 12.1322 10.2273 11.4544 10.2273C10.7767 10.2273 10.2272 10.7768 10.2272 11.4546C10.2272 12.1323 10.7767 12.6818 11.4544 12.6818Z"
-        fill={active ? "#E70F0F" : "#77777E"}
+        fill={active ? '#E70F0F' : '#77777E'}
       />
     </svg>
   );

@@ -1,51 +1,51 @@
-"use client";
-import { CrossIcon } from "@/Icons";
-import PrimaryButton from "@/components/Buttons/PrimaryButton";
-import CustomPageWrapper from "@/components/Wrappers/CustomPageWrapper";
-import { useAppContext } from "@/provider/ContextProvider/ContextProvider";
-import { useGetProductDetail } from "@/queries/Cart";
-import { useGetAllProducts } from "@/queries/dataHandlers";
-import { ProductDataType } from "@/utils/Types";
-import { ProductDetailType } from "@/utils/productType";
-import { useSearchParams } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+'use client';
+import { CrossIcon } from '@/Icons';
+import PrimaryButton from '@/components/Buttons/PrimaryButton';
+import CustomPageWrapper from '@/components/Wrappers/CustomPageWrapper';
+import { useAppContext } from '@/provider/ContextProvider/ContextProvider';
+import { useGetProductDetail } from '@/queries/Cart';
+import { useGetAllProducts } from '@/queries/dataHandlers';
+import { ProductDataType } from '@/utils/Types';
+import { ProductDetailType } from '@/utils/productType';
+import { useSearchParams } from 'next/navigation';
+import { useEffect, useMemo, useState } from 'react';
 
 export default function ComparePage() {
   const params = useSearchParams();
-  const productId = params?.get("productId");
+  const productId = params?.get('productId');
   const { data, isLoading, error } = useGetAllProducts({});
   const [productA, setProductA] = useState<any>(null);
   const [productB, setProductB] = useState<any>(null);
 
   useEffect(() => {
-    console.log("productId:", productId);
-    console.log("data:", data);
-    console.log("isLoading:", isLoading);
-    console.log("error:", error);
+    console.log('productId:', productId);
+    console.log('data:', data);
+    console.log('isLoading:', isLoading);
+    console.log('error:', error);
 
     if (productId && data?.products) {
       const products = data.products as ProductDataType[];
-      console.log("products array:", products);
+      console.log('products array:', products);
 
       // Set productA
       const defaultProduct = products?.find(
         (product) => product.id === Number(productId)
       );
-      console.log("defaultProduct (productA):", defaultProduct);
+      console.log('defaultProduct (productA):', defaultProduct);
       if (defaultProduct) {
-        const filterData = {
+        const filterData: Record<string, string | number> = {
           price: defaultProduct?.varients?.[0]?.sellingPrice,
           weight: defaultProduct?.varients?.[0]?.units,
           brand: defaultProduct?.brand?.heading,
           rating: defaultProduct?.averageRating,
         };
         defaultProduct?.overView?.forEach((item: any) => {
-          filterData[item?.nutrients] = item.value;
+          filterData[item?.nutrients as string] = item.value;
         });
-        console.log("filterData for productA:", filterData);
+        console.log('filterData for productA:', filterData);
         setProductA(filterData);
       } else {
-        console.log("Product with ID", productId, "not found in products");
+        console.log('Product with ID', productId, 'not found in products');
       }
     }
   }, [productId, data, isLoading, error]); // Removed productB from dependencies
@@ -113,7 +113,7 @@ export const ProductsCompareInfo = ({
   defaultProductId: any;
 }) => {
   const [showList, setShowList] = useState(false);
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState('');
   const { userData } = useAppContext();
   const [product, setProduct] = useState<number | null>(defaultProductId);
   const { data, dataUpdatedAt } = useGetProductDetail(
@@ -132,16 +132,16 @@ export const ProductsCompareInfo = ({
   useEffect(() => {
     if (data) {
       const product: ProductDetailType = data?.data?.result;
-      const filterData = {
+      const filterData: Record<string, string | number> = {
         price: product?.varients?.[0]?.sellingPrice,
         weight: product?.varients?.[0]?.units,
         brand: product?.brand?.heading,
         rating: product?.averageRating,
       };
       product?.overView?.forEach((item: any) => {
-        filterData[item?.nutrients] = item.value;
+        filterData[item?.nutrients as string] = item.value;
       });
-      console.log("Selected product data:", filterData);
+      console.log('Selected product data:', filterData);
       setProductData(filterData);
     }
   }, [dataUpdatedAt, setProductData]);
@@ -249,9 +249,9 @@ export const ComparisonTable = ({
       ...(productB ? Object.keys(productB) : []),
     ])
   ).sort();
-  console.log("productA in table:", productA);
-  console.log("productB in table:", productB);
-  console.log("allKeys:", allKeys);
+  console.log('productA in table:', productA);
+  console.log('productB in table:', productB);
+  console.log('allKeys:', allKeys);
 
   return (
     <div className="w-full">
@@ -265,25 +265,25 @@ export const ComparisonTable = ({
             </div>
             <div
               className={`p-3 border-b text-gray-700 text-2xl max-sm:text-sm border-r text-center ${
-                key.toLowerCase() === "price"
-                  ? "text-[#E70F0F] font-semibold"
-                  : "font-normal"
+                key.toLowerCase() === 'price'
+                  ? 'text-[#E70F0F] font-semibold'
+                  : 'font-normal'
               }`}
             >
               {productA && productA[key] !== undefined
-                ? `${key.toLowerCase() === "price" ? "₹" : ""}${productA[key]}`
-                : "-"}
+                ? `${key.toLowerCase() === 'price' ? '₹' : ''}${productA[key]}`
+                : '-'}
             </div>
             <div
               className={`p-3 border-b text-gray-700 text-2xl max-sm:text-sm text-center ${
-                key.toLowerCase() === "price"
-                  ? "text-[#E70F0F] font-semibold"
-                  : "font-normal"
+                key.toLowerCase() === 'price'
+                  ? 'text-[#E70F0F] font-semibold'
+                  : 'font-normal'
               }`}
             >
               {productB && productB[key] !== undefined
-                ? `${key.toLowerCase() === "price" ? "₹" : ""}${productB[key]}`
-                : "-"}
+                ? `${key.toLowerCase() === 'price' ? '₹' : ''}${productB[key]}`
+                : '-'}
             </div>
           </div>
         ))

@@ -1,15 +1,15 @@
-"use client";
-import { ProductDetail, ProductFooter, ProductOverview } from "@/components";
-import CustomPageWrapper from "@/components/Wrappers/CustomPageWrapper";
-import { useAppContext } from "@/provider/ContextProvider/ContextProvider";
-import { useGetProductDetail } from "@/queries/Cart";
-import { ProductDetailType } from "@/utils/productType";
-import { useSearchParams } from "next/navigation";
+'use client';
+import { ProductDetail, ProductFooter, ProductOverview } from '@/components';
+import CustomPageWrapper from '@/components/Wrappers/CustomPageWrapper';
+import { useAppContext } from '@/provider/ContextProvider/ContextProvider';
+import { useGetProductDetail } from '@/queries/Cart';
+import { ProductDetailType } from '@/utils/productType';
+import { useSearchParams } from 'next/navigation';
 
 export default function Page() {
   const searchParams = useSearchParams();
   const { userData } = useAppContext();
-  const productId = searchParams.get("id") as string;
+  const productId = searchParams?.get('id') ?? '';
   const { data } = useGetProductDetail(Number(productId), userData?.id || 1);
   if (!data) return <></>;
   const productData = data?.data?.result as ProductDetailType;

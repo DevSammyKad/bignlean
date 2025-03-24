@@ -1,12 +1,12 @@
-"use client";
-import Link from "next/link";
-import ProfileImages from "../Navbar/Profile/ProfileImages";
-import DownloadApp from "./DownloadApp";
-import FollowUs from "./FollowUs";
-import Subscribe from "./Subscribe";
-import { useGetPopularBrands } from "@/queries/dataHandlers";
-import { usePathname, useRouter } from "next/navigation";
-import { useDispatchContext } from "@/provider/ContextProvider/ContextProvider";
+'use client';
+import Link from 'next/link';
+import ProfileImages from '../Navbar/Profile/ProfileImages';
+import DownloadApp from './DownloadApp';
+import FollowUs from './FollowUs';
+import Subscribe from './Subscribe';
+import { useGetPopularBrands } from '@/queries/dataHandlers';
+import { usePathname, useRouter } from 'next/navigation';
+import { useDispatchContext } from '@/provider/ContextProvider/ContextProvider';
 
 type SiteLinks = {
   heading: string;
@@ -16,16 +16,16 @@ type SiteLinks = {
   }[];
 }[];
 const aboutSite = [
-  { label: "About us", link: "/aboutus" },
-  { label: "Contact us", link: "/contact-us" },
-  { label: "Refer & Earn", link: "/refer-friend" },
-  { label: "Authenticity Guaranteed", link: "/authenticity" },
+  { label: 'About us', link: '/aboutus' },
+  { label: 'Contact us', link: '/contact-us' },
+  { label: 'Refer & Earn', link: '/refer-friend' },
+  { label: 'Authenticity Guaranteed', link: '/authenticity' },
 ];
 const useFulLinks = [
-  { label: "Returns and Refunds", link: "/privacy-policy" },
-  { label: "Terms and Conditions", link: "/terms-and-conditions" },
-  { label: "Privacy Policy", link: "/privacy-policy" },
-  { label: "Track your Shipment", link: "/track-order" },
+  { label: 'Returns and Refunds', link: '/privacy-policy' },
+  { label: 'Terms and Conditions', link: '/terms-and-conditions' },
+  { label: 'Privacy Policy', link: '/privacy-policy' },
+  { label: 'Track your Shipment', link: '/track-order' },
 ];
 
 export default function Footer() {
@@ -34,14 +34,14 @@ export default function Footer() {
   const pathname = usePathname();
   const dispatch = useDispatchContext();
   const showBnlDesc =
-    pathname !== "/" && pathname !== "/login" && pathname !== "/signup";
+    pathname !== '/' && pathname !== '/login' && pathname !== '/signup';
   const handleBrandClick = (brandId: number) => {
     if (brandId) {
       dispatch({
-        type: "SET_SELECTED_BRANDS",
+        type: 'SET_SELECTED_BRANDS',
         payload: `brands[]=${brandId}`,
       });
-      router.push("/shop-by-brands");
+      router.push('/shop-by-brands');
     }
   };
 
@@ -50,9 +50,9 @@ export default function Footer() {
       {showBnlDesc && (
         <div
           className={`text-sm w-[85%] max-xl:w-[95%] max-w-[1300px] mx-auto  py-5 ${
-            pathname.includes("product/")
-              ? "max-sm:pb-[200px]"
-              : "max-sm:pb-[80px]"
+            pathname?.includes('product/')
+              ? 'max-sm:pb-[200px]'
+              : 'max-sm:pb-[80px]'
           }`}
         >
           <p className="">
@@ -75,7 +75,7 @@ export default function Footer() {
             shopping the supplements.
           </p>
           <p className="py-2">
-            Whether it’s your first step towards the fitness goal or you are an
+            Whether it's your first step towards the fitness goal or you are an
             existing professional, we can help. We have a vast range of health
             supplements categorized as per their qualities in our online shop.
             Happy Shopping.
@@ -147,7 +147,7 @@ export default function Footer() {
                   Email
                 </h3>
                 <Link
-                  href={"mailto:support@bignlean.com"}
+                  href={'mailto:support@bignlean.com'}
                   className="text-white text-sm not-italic font-normal leading-5"
                 >
                   support@bignlean.com
@@ -158,7 +158,7 @@ export default function Footer() {
                   Toll Free
                 </h3>
                 <Link
-                  href={"tel:18002661313"}
+                  href={'tel:18002661313'}
                   className="text-white text-sm not-italic font-normal leading-5"
                 >
                   1800 266 1313
