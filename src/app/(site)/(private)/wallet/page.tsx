@@ -1,9 +1,8 @@
-"use client";
-import { CoinIcon, CoinSmIcon, CreditIcon, DebitIcon } from "@/Icons";
-import CustomPageWrapper from "@/components/Wrappers/CustomPageWrapper";
-import { useAppContext } from "@/provider/ContextProvider/ContextProvider";
-import { useGetWalletDetail } from "@/queries/Cart";
-import { useEffect, useState } from "react";
+'use client';
+import { CoinIcon, CoinSmIcon, CreditIcon, DebitIcon } from '@/Icons';
+import CustomPageWrapper from '@/components/Wrappers/CustomPageWrapper';
+import { useAppContext } from '@/provider/ContextProvider/ContextProvider';
+import { useGetWalletDetail } from '@/queries/Cart';
 
 const FakeTranctionData: {
   transLabel: string;
@@ -13,39 +12,39 @@ const FakeTranctionData: {
   time: string;
 }[] = [
   {
-    transLabel: "Lorem ipsum",
+    transLabel: 'Lorem ipsum',
     credit: true,
-    value: "30",
+    value: '30',
     status: true,
-    time: "3rd January 2023, 1:53 pm",
+    time: '3rd January 2023, 1:53 pm',
   },
   {
-    transLabel: "Lorem ipsum",
+    transLabel: 'Lorem ipsum',
     credit: false,
-    value: "30",
+    value: '30',
     status: true,
-    time: "3rd January 2023, 1:53 pm",
+    time: '3rd January 2023, 1:53 pm',
   },
   {
-    transLabel: "Lorem ipsum",
+    transLabel: 'Lorem ipsum',
     credit: true,
-    value: "30",
+    value: '30',
     status: true,
-    time: "1rd January 2023, 1:53 pm",
+    time: '1rd January 2023, 1:53 pm',
   },
   {
-    transLabel: "Lorem ipsum",
+    transLabel: 'Lorem ipsum',
     credit: true,
-    value: "30",
+    value: '30',
     status: false,
-    time: "3rd January 2023, 1:53 pm",
+    time: '3rd January 2023, 1:53 pm',
   },
   {
-    transLabel: "Lorem ipsum",
+    transLabel: 'Lorem ipsum',
     credit: false,
-    value: "30",
+    value: '30',
     status: true,
-    time: "3rd January 2023, 1:53 pm",
+    time: '3rd January 2023, 1:53 pm',
   },
 ];
 
@@ -60,7 +59,7 @@ type TxsType = {
   updatedAt: string;
 };
 
-export default function page() {
+export default function Page() {
   const { userData } = useAppContext();
   const { data } = useGetWalletDetail(userData?.id as number);
 
@@ -77,7 +76,7 @@ export default function page() {
               {data?.data?.transactions.map((tran: TxsType, index: number) => (
                 <div key={index} className="flex flex-col gap-2">
                   <TransactionCard
-                    credit={tran?.type === "in" ? true : false}
+                    credit={tran?.type === 'in' ? true : false}
                     status={tran?.type}
                     time={tran?.updatedAt}
                     transLabel={tran?.title}
@@ -148,10 +147,10 @@ const TransactionCard = ({
         </p>
         <p
           className={` not-italic font-normal text-xs leading-5 ${
-            status ? "text-green-600" : "text-red-500"
+            status ? 'text-green-600' : 'text-red-500'
           }`}
         >
-          {status === "in" ? "Transaction Successful" : "Redemption Successful"}
+          {status === 'in' ? 'Transaction Successful' : 'Redemption Successful'}
         </p>
       </div>
     </div>
